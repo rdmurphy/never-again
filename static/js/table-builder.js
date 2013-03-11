@@ -30,7 +30,7 @@ $processButton.on('click', function() {
 
     $processButton.find('i').attr('class', 'icon-thumbs-up');
 
-    $tableOutput.html(tableOutput);
+    $tableOutput.val('<!-- Begin table embed -->\n\n' + tableOutput + '\n\n<!-- End table embed -->');
     $displayArea.html(tableOutput);
 
     if (tableType === 'sortable') {
