@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HTML Table Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+    <div class="container">
+        <a class="brand" href="#">Never Again!</a>
+        <ul class="nav">
+            <li class="active"><a href="#"><i class="icon-list-alt"></i> Table Builder</a></li>
+            <li><a href="#"><i class="icon-file"></i> Document Embedder</a></li>
+            <li><a href="#"><i class="icon-flag"></i> Map Builder</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+
+<div class="container">
+
+<p class="lead">HTML Tables, Made To Order!</p>
+
+<p>Never have to rely on another person to add HTML tables to your stories again! Use this tool to prepare a simple tabular data display that is customized to work just like The Texas Tribune web site expects it. It supports copy/pasting of data <strong>directly from Microsoft Excel/Google Spreadsheets</strong>.</p>
+
+<p><small>(It can do .csv text too! Just make sure you change to "CSV mode" in the options.)</small></p>
+
+<p>Just put your data in the left text box, select your options, and hit the big "process" button. The code for your table into the CMS appears in the box to the right. You can preview the results below.</p>
+
+<div class="accordion">
+<div class="accordion-group">
+    <div class="accordion-heading">
+    <a class="accordion-toggle" id="options-toggle" data-toggle="collapse" data-parent="#accordion2" href="#options">
+        <i class="icon-chevron-right"></i> Options
+    </a>
+    </div>
+<div id="options" class="accordion-body collapse">
+  <div class="accordion-inner">
+    <h5>Data input type</h5>
+    <div class="btn-group" id="data-input-type" data-toggle="buttons-radio">
+        <button class="btn active" data-type="tsv">TSV mode (Microsoft Excel/Google Spreadsheets)</button>
+        <button class="btn" data-type="csv">CSV mode (.csv files)</button>
+    </div>
+    <h5>Table type</h5>
+    <div class="btn-group" id="table-type" data-toggle="buttons-radio">
+        <button class="btn active" data-type="basic">Basic/static</button>
+        <button class="btn" data-type="sortable">Sortable</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row">
+
+<div class="span5">
+    <h4>Put data here</h4>
+    <textarea id="data-input" class="text-field" rows="12"></textarea>
+</div>
+
+<div class="span2">
+    <button class="btn btn-large process-button" type="button" id="process-button"><i class="icon-hand-right"></i> Process!</button>
+</div>
+
+<div class="span5">
+    <h4>HTML table code comes out here</h4>
+    <textarea id="table-output" class="text-field" rows="12" onclick="this.focus();this.select()"></textarea>
+</div>
+
+</div>
+
+<hr>
+
+<h4>Preview</h4>
+
+<div id="display-area" class="display-area ttrib-table"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/jquery-1.9.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/d3.v3.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.tablesorter.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

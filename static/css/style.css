@@ -1,0 +1,66 @@
+body {
+    padding: 60px 0 40px 0;
+}
+
+textarea {
+    width: 96%;
+    resize: none;
+}
+
+.process-button {
+    margin: 135px 0 0 4px;
+}
+
+.display-area {
+    width: 636px;
+}
+
+.ttrib-table table.data, dl.data {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    margin: 0.5em 0;
+    width: 100%;
+    line-height: 1;
+}
+
+.ttrib-table table.data > thead {
+    border-bottom: 1px solid #cccccc;
+}
+
+.ttrib-table table.data > thead th {
+    font-weight: bold;
+}
+
+.ttrib-table th {
+    text-align: left;
+    font-style: normal;
+}
+
+.ttrib-table table.data tr > * {
+    padding: 4px;
+    vertical-align: top;
+}
+
+.ttrib-table table.data tr.even {
+    background-color: #EEE;
+}
+
+.ttrib-table .data.tablesorter thead > tr > * {
+    background-color: #eae9e3;
+    border: 1px solid white;
+    vertical-align: middle;
+}
+
+.ttrib-table .tablesorter > thead > tr > th {
+    background: url("https://s3.amazonaws.com/static.texastribune.org/common/images/bg.gif") no-repeat scroll right center;
+    cursor: pointer;
+    padding-right: 16px;
+}
+
+.ttrib-table .tablesorter > thead > tr > .headerSortUp {
+    background: url("https://s3.amazonaws.com/static.texastribune.org/common/images/asc.gif") no-repeat scroll right center;
+}
+
+.ttrib-table .tablesorter > thead > tr > .headerSortDown {
+    background: url("https://s3.amazonaws.com/static.texastribune.org/common/images/desc.gif") no-repeat scroll right center;
+}
