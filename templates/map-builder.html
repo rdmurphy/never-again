@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HTML Table Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+    <div class="container">
+        <a class="brand" href="/">Never Again!</a>
+        <ul class="nav">
+            <li><a href="/table-builder"><i class="icon-list-alt"></i> Table Builder</a></li>
+            <li><a href="/document-embed"><i class="icon-file"></i> Document Embedder</a></li>
+            <li class="active"><a href="/map-builder"><i class="icon-flag"></i> Map Builder</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+
+<div class="container">
+
+<p class="lead">Gonna make this real nice, real soon.</p>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/jquery-1.9.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
