@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>HTML Table Builder</title>
+    <title>Document Embedder | Never Again!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
@@ -24,11 +24,66 @@
 
 <div class="container">
 
-<p class="lead">Gonna make this real nice, real soon.</p>
+<p class="lead">Embedding Documents, Made Easy</p>
+
+<p>Use this form to prepare document embeds in the way the Texas Tribune CMS expects them. Just put the URL of the document in the input box, hit "Process!" and grab the embed code below.</p>
+
+<div class="well well-small">
+    <h5>Where do I upload my file?</h5>
+    <p>Great question! There's a place for this in the CMS. <a href="https://www.texastribune.org/admin/documents/document/">Go there now</a>. Once it uploads, you can bring that URL here and prepare an embed.</p>
+</div>
+
+<table class="table table-striped table-hover">
+<caption>The document embedder supports these filetypes:</caption>
+<thead>
+    <tr>
+        <th>File type</th>
+        <th>File extension</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>Adobe Portable Document Format</td>
+        <td>.PDF</td>
+    </tr>
+    <tr>
+        <td>Microsoft Word</td>
+        <td>.DOC and .DOCX</td>
+    </tr>
+    <tr>
+        <td>Microsoft Excel</td>
+        <td>.XLS and .XLSX</td>
+    </tr>
+    <tr>
+        <td>Microsoft Powerpoint</td>
+        <td>.PPT and .PPTX</td>
+    </tr>
+    <tr>
+        <td>Text files</td>
+        <td>.TXT</td>
+    </tr>
+</tbody>
+</table>
+
+<h4>Document URL goes here</h4>
+<form class="form-inline">
+    <input type="text" id="doc-input" placeholder="">
+    <button type="submit" class="btn" id="process-button"><i class="icon-hand-down"></i> Process!</button>
+</form>
+
+<h4>Embed code comes out here</h4>
+<textarea id="embed-output" class="text-field" rows="5"></textarea>
+
+<hr>
+
+<h4>Preview</h4>
+
+<div class="display-area" id="display-area"></div>
 
 </div>
 
 <script src="{{ url_for('static', filename='js/jquery-1.9.1.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/document-embed.js') }}"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@ var $tableType = $('#table-type');
 
 $processButton.on('click', function() {
     var data = $dataInput.val();
+    var rows;
 
     if (!data) {
         alert('You forgot to put your data in!');
@@ -18,11 +19,11 @@ $processButton.on('click', function() {
     var tableType = $tableType.find('.active').data('type');
 
     if (activeType === 'tsv') {
-        var rows = d3.tsv.parseRows(data);
+        rows = d3.tsv.parseRows(data);
     }
 
     if (activeType === 'csv') {
-        var rows = d3.csv.parseRows(data);
+        rows = d3.csv.parseRows(data);
     }
 
     var tableOutput = buildTable(rows, tableType);
