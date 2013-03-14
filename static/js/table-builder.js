@@ -99,6 +99,8 @@ $processButton.on('click', function() {
     }
 
     storage.push(data);
+    var runtime = moment().format('M-D-YYYY h:m a');
+    storage.push(runtime);
 
     $processButton.find('i').attr('class', 'icon-thumbs-up');
 
