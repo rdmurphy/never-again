@@ -16,6 +16,11 @@ def table_builder():
 def document_embed():
     return render_template('document-embed.html')
 
+@app.route('/audio-embed/')
+def audio_embed():
+    return render_template('audio-embed.html')
+
+
 @app.route('/map-builder/')
 def map_builder():
     return render_template('map-builder.html')
