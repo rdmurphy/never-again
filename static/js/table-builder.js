@@ -5,10 +5,13 @@ var $displayArea = $('#display-area');
 var $optionsToggle = $('#options-toggle');
 var $dataInputType = $('#data-input-type');
 var $tableType = $('#table-type');
+var $tableHeader = $('#table-header');
+var $tableSource = $('#table-source');
+var $tableSourceUrl = $('#table-source-url');
 
 $processButton.on('click', function() {
     var data = $dataInput.val();
-    var rows;
+    var rows, payload;
 
     if (!data) {
         alert('You forgot to put your data in!');
@@ -28,10 +31,35 @@ $processButton.on('click', function() {
 
     var tableOutput = buildTable(rows, tableType);
 
-    $processButton.find('i').attr('class', 'icon-thumbs-up');
+    var tableHeader = $('<div/>', {
+        text: $tableHeader.val()
+    }).css({
+        'text-align': 'center',
+        'font-weight': 'bold',
+        'font-size': '15px',
+        'margin-top': '5px'
+    });
 
-    $tableOutput.val('<!-- Begin table embed -->\n\n' + tableOutput + '\n\n<!-- End table embed -->');
-    $displayArea.html(tableOutput);
+    var tableSource = $('<div/>', {
+        html: 'Source: ' + $('<div/>').append($('<a/>', {
+            text: $tableSource.val(),
+            href: $tableSourceUrl.val()
+        }).clone()).html()
+    }).css({
+        'text-align': 'center',
+        'font-style': 'italic',
+        'font-size': '13px',
+        'color': '#666666'
+    });
+
+    payload = '<!-- Begin table embed -->\n\n' +
+        $('<div/>').append(tableHeader.clone()).html() +
+        $('<div/>').append(tableSource.clone()).html() +
+        tableOutput +
+        '\n\n<!-- End table embed -->';
+
+    $tableOutput.val(payload);
+    $displayArea.html(payload);
 
     if (tableType === 'sortable') {
         $('table').tablesorter({
@@ -40,6 +68,9 @@ $processButton.on('click', function() {
             widgetZebra:{css:['even','odd']}
         });
     }
+
+    $processButton.find('i').attr('class', 'icon-thumbs-up');
+
 });
 
 $optionsToggle.on('click', function() {

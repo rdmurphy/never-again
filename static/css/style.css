@@ -13,6 +13,16 @@ textarea {
 
 .display-area {
     width: 636px;
+    font-family: Georgia, Times, serif;
+}
+
+.display-area a {
+    color: rgb(0, 137, 144);
+    text-decoration: none;
+}
+
+.display-area a:hover {
+    text-decoration: underline;
 }
 
 .ttrib-table table.data, dl.data {
