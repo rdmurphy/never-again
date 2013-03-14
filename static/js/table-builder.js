@@ -13,6 +13,8 @@ $processButton.on('click', function() {
     var data = $dataInput.val();
     var rows, payload, tableOutput, tableHeader, tableSource;
 
+    var storage = [];
+
     if (!data) {
         alert('You forgot to put your data in!');
         return false;
@@ -32,6 +34,9 @@ $processButton.on('click', function() {
     tableOutput = buildTable(rows, tableType);
 
     if ($tableHeader.val()) {
+
+        storage.push($tableHeader.val());
+
         tableHeader = $('<div/>', {
             text: $tableHeader.val()
         }).css({
@@ -43,7 +48,13 @@ $processButton.on('click', function() {
     }
 
     if ($tableSource.val()) {
+
+        storage.push($tableSource.val());
+
         if ($tableSourceUrl.val()) {
+
+            storage.push($tableSourceUrl.val());
+
             tableSource = $('<div/>', {
                 html: 'Source: ' + $('<div/>').append($('<a/>', {
                     text: $tableSource.val(),
@@ -86,6 +97,8 @@ $processButton.on('click', function() {
             widgetZebra:{css:['even','odd']}
         });
     }
+
+    storage.push(data);
 
     $processButton.find('i').attr('class', 'icon-thumbs-up');
 
