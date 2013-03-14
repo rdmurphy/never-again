@@ -11,7 +11,7 @@ var $tableSourceUrl = $('#table-source-url');
 
 $processButton.on('click', function() {
     var data = $dataInput.val();
-    var rows, payload;
+    var rows, payload, tableOutput, tableHeader, tableSource;
 
     if (!data) {
         alert('You forgot to put your data in!');
@@ -29,34 +29,52 @@ $processButton.on('click', function() {
         rows = d3.csv.parseRows(data);
     }
 
-    var tableOutput = buildTable(rows, tableType);
+    tableOutput = buildTable(rows, tableType);
 
-    var tableHeader = $('<div/>', {
-        text: $tableHeader.val()
-    }).css({
-        'text-align': 'center',
-        'font-weight': 'bold',
-        'font-size': '15px',
-        'margin-top': '5px'
-    });
+    if ($tableHeader.val()) {
+        tableHeader = $('<div/>', {
+            text: $tableHeader.val()
+        }).css({
+            'text-align': 'center',
+            'font-weight': 'bold',
+            'font-size': '15px',
+            'margin-top': '5px'
+        });
+    }
 
-    var tableSource = $('<div/>', {
-        html: 'Source: ' + $('<div/>').append($('<a/>', {
-            text: $tableSource.val(),
-            href: $tableSourceUrl.val()
-        }).clone()).html()
-    }).css({
-        'text-align': 'center',
-        'font-style': 'italic',
-        'font-size': '13px',
-        'color': '#666666'
-    });
+    if ($tableSource.val()) {
+        if ($tableSourceUrl.val()) {
+            tableSource = $('<div/>', {
+                html: 'Source: ' + $('<div/>').append($('<a/>', {
+                    text: $tableSource.val(),
+                    href: $tableSourceUrl.val()
+                }).clone()).html()
+            }).css({
+                'text-align': 'center',
+                'font-style': 'italic',
+                'font-size': '13px',
+                'color': '#666666'
+            });
+        } else {
+            tableSource = $('<div/>', {
+                text: 'Source: ' + $tableSource.val()
+            }).css({
+                'text-align': 'center',
+                'font-style': 'italic',
+                'font-size': '13px',
+                'color': '#666666'
+            });
+        }
+    }
 
-    payload = '<!-- Begin table embed -->\n\n' +
-        $('<div/>').append(tableHeader.clone()).html() +
-        $('<div/>').append(tableSource.clone()).html() +
-        tableOutput +
-        '\n\n<!-- End table embed -->';
+    payload = '<!-- Begin table embed -->\n\n';
+    if (tableHeader) {
+        payload += $('<div/>').append(tableHeader.clone()).html();
+    }
+    if (tableSource) {
+        payload += $('<div/>').append(tableSource.clone()).html();
+    }
+    payload += tableOutput + '\n\n<!-- End table embed -->';
 
     $tableOutput.val(payload);
     $displayArea.html(payload);
