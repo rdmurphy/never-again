@@ -52,6 +52,8 @@ function buildPreviousDropdown(tablesArray) {
         $previousSelect.append($('<option/>', {text: header + " | " + time, value: i}));
     });
 
+    $previousSelect.find('option').eq(1).attr('selected', 'selected');
+
     return false;
 }
 
@@ -148,6 +150,7 @@ $processButton.on('click', function() {
     }
 
     $processButton.find('i').attr('class', 'icon-thumbs-up');
+    $('#added-flirt').fadeIn(400).delay(1600).fadeOut(400);
 });
 
 $previousButton.on('click', function() {
