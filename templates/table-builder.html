@@ -36,11 +36,14 @@
 
 <div class="span12">
 
-<label>Previously built table(s)</label>
-<select>
-    <option value=""></option>
-    <option value="">Hello! - 3/14/2012</option>
-</select>
+<form>
+    <label>Previously built table(s)</label>
+    <select id="previous-select" class="span4 previous-select">
+        <option value=""></option>
+    </select>
+</form>
+<button class="btn" type="button"><i class="icon-refresh"></i> Load</button>
+
 
 <hr>
 
@@ -107,6 +110,7 @@
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/d3.v3.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/jquery.tablesorter.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/table-builder.js') }}"></script>
 </body>
 </html>

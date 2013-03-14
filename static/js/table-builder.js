@@ -1,3 +1,16 @@
+// do we haz localstorage?
+
+var localStorageTest = (function() {
+    try {
+        var mod = new Date();
+        localStorage.setItem(mod, mod);
+        localStorage.removeItem(mod);
+        return true;
+    } catch(e) {
+        return false;
+    }
+})();
+
 var $dataInput = $('#data-input');
 var $processButton = $('#process-button');
 var $tableOutput = $('#table-output');
@@ -8,6 +21,38 @@ var $tableType = $('#table-type');
 var $tableHeader = $('#table-header');
 var $tableSource = $('#table-source');
 var $tableSourceUrl = $('#table-source-url');
+var $previousSelect = $('#previous-select');
+
+function getStoredTablesAsJSON() {
+    if (!localStorage.getItem('tables')) {
+        localStorage.setItem('tables', JSON.stringify([]));
+    }
+
+    return JSON.parse(localStorage.getItem('tables'));
+}
+
+function addToStoredTables(tableArray) {
+    var tables = getStoredTablesAsJSON();
+    var tablesLength = tables.length;
+    if (tablesLength > 9) {
+        tables.splice(0, 1);
+    }
+    tables.push(tableArray);
+    localStorage.setItem('tables', JSON.stringify(tables));
+    return false;
+}
+
+function buildPreviousDropdown(tablesArray) {
+    $previousSelect.empty().append($('<option/>'));
+
+    $.each(tablesArray.reverse(), function(i, v) {
+        var header = v[0];
+        var time = v.slice(-1);
+        $previousSelect.append($('<option/>', {text: header + " | " + time, value: i}));
+    });
+
+    return false;
+}
 
 $processButton.on('click', function() {
     var data = $dataInput.val();
@@ -99,8 +144,13 @@ $processButton.on('click', function() {
     }
 
     storage.push(data);
-    var runtime = moment().format('M-D-YYYY h:m a');
+    var runtime = moment().format('M-D-YYYY h:mm:ss a');
     storage.push(runtime);
+
+    if(localStorageTest) {
+        addToStoredTables(storage);
+        buildPreviousDropdown(getStoredTablesAsJSON());
+    }
 
     $processButton.find('i').attr('class', 'icon-thumbs-up');
 
@@ -155,3 +205,7 @@ function buildTable(rows, type) {
 
     return $('<div/>').append(table.clone()).html();
 }
+
+$(document).ready( function() {
+    buildPreviousDropdown(getStoredTablesAsJSON());
+});
