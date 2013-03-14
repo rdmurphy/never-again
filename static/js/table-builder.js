@@ -22,6 +22,7 @@ var $tableHeader = $('#table-header');
 var $tableSource = $('#table-source');
 var $tableSourceUrl = $('#table-source-url');
 var $previousSelect = $('#previous-select');
+var $previousButton = $('#previous-button');
 
 function getStoredTablesAsJSON() {
     if (!localStorage.getItem('tables')) {
@@ -79,9 +80,6 @@ $processButton.on('click', function() {
     tableOutput = buildTable(rows, tableType);
 
     if ($tableHeader.val()) {
-
-        storage.push($tableHeader.val());
-
         tableHeader = $('<div/>', {
             text: $tableHeader.val()
         }).css({
@@ -93,13 +91,7 @@ $processButton.on('click', function() {
     }
 
     if ($tableSource.val()) {
-
-        storage.push($tableSource.val());
-
         if ($tableSourceUrl.val()) {
-
-            storage.push($tableSourceUrl.val());
-
             tableSource = $('<div/>', {
                 html: 'Source: ' + $('<div/>').append($('<a/>', {
                     text: $tableSource.val(),
@@ -143,6 +135,9 @@ $processButton.on('click', function() {
         });
     }
 
+    storage.push($tableHeader.val());
+    storage.push($tableSource.val());
+    storage.push($tableSourceUrl.val());
     storage.push(data);
     var runtime = moment().format('M-D-YYYY h:mm:ss a');
     storage.push(runtime);
@@ -153,7 +148,17 @@ $processButton.on('click', function() {
     }
 
     $processButton.find('i').attr('class', 'icon-thumbs-up');
+});
 
+$previousButton.on('click', function() {
+    var val = $previousSelect.val();
+    if (!val) { return false; }
+    var oldTable = getStoredTablesAsJSON().reverse()[val];
+
+    $tableHeader.val(oldTable[0]);
+    $tableSource.val(oldTable[1]);
+    $tableSourceUrl.val(oldTable[2]);
+    $dataInput.val(oldTable[3]);
 });
 
 $optionsToggle.on('click', function() {
