@@ -10,7 +10,7 @@ The easier it is == the more likely it will happen.
 Caveats
 -------
 
-Currently, **Never Again!** is built to suit the Texas Tribune way of doing things. I plan to "de-Tribune" it in the near future so it's more generic. That way others can pull it in and add their own customizations on top of the basic framework.
+Currently, **Never Again!** is built to suit the Texas Tribune way of doing things. I plan to "de-Tribune" it in the near future so it's more generic, so others can pull it in and add their own customizations on top of the basic framework.
 
 Installation
 ------------
@@ -19,4 +19,4 @@ Pretty easy. Clone the repository, then:
 
 `pip install -r requirements.txt`
 
-If you are running it locally, you can just use `python app.py`. If you have [Heroku](http://www.heroku.com) good to go on your machine, there is already a `Procfile` ready for when you shove it up to an instance.
+If you are running it locally, you can just use `python app.py`. If you have [Heroku](http://www.heroku.com) good to go on your machine, there is a prepared `Procfile` for when you shove it up to an instance.
