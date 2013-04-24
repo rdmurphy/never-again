@@ -37,6 +37,18 @@
 <div class="span12">
 
 <form>
+    <label>Previously built table(s)</label>
+    <select id="previous-select" class="span4 previous-select">
+        <option value=""></option>
+    </select>
+    <span class="hide" id="added-flirt"><i class="icon-arrow-left"></i> Added!</span>
+</form>
+<button class="btn" type="button" id="previous-button"><i class="icon-arrow-down"></i> Load</button>
+
+
+<hr>
+
+<form>
     <label>Table header</label>
     <input id="table-header" class="span4" type="text" placeholder="Lobbyist Expenditures">
     <label>Table source</label>
@@ -99,6 +111,7 @@
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/d3.v3.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/jquery.tablesorter.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/table-builder.js') }}"></script>
 </body>
 </html>
